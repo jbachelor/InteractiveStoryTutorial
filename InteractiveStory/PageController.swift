@@ -51,10 +51,7 @@ class PageController: UIViewController {
             if let secondChoice = page.secondChoice {
                 secondChoiceButton.setTitle(secondChoice.title, forState: .Normal)
                 secondChoiceButton.addTarget(self, action: #selector(PageController.loadSecondChoice), forControlEvents: .TouchUpInside)
-            } //else {
-//                secondChoiceButton.setTitle("Play Again?", forState: .Normal)
-//                secondChoiceButton.addTarget(self, action: #selector(PageController.playAgain), forControlEvents: .TouchUpInside)
-//            }
+            } 
         }
     }
 
