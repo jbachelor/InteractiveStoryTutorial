@@ -13,6 +13,7 @@
 		F339373C1D05C5C000BBF205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F339373B1D05C5C000BBF205 /* Assets.xcassets */; };
 		F339373F1D05C5C000BBF205 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F339373D1D05C5C000BBF205 /* LaunchScreen.storyboard */; };
 		F33937471D05CBF400BBF205 /* InteractiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33937461D05CBF400BBF205 /* InteractiveStory.swift */; };
+		F33937491D06069D00BBF205 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33937481D06069D00BBF205 /* PageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F339373E1D05C5C000BBF205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F33937401D05C5C000BBF205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F33937461D05CBF400BBF205 /* InteractiveStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveStory.swift; sourceTree = "<group>"; };
+		F33937481D06069D00BBF205 /* PageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				F33937341D05C5C000BBF205 /* AppDelegate.swift */,
 				F33937461D05CBF400BBF205 /* InteractiveStory.swift */,
+				F33937481D06069D00BBF205 /* PageController.swift */,
 				F33937361D05C5C000BBF205 /* ViewController.swift */,
 				F33937381D05C5C000BBF205 /* Main.storyboard */,
 				F339373B1D05C5C000BBF205 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F33937491D06069D00BBF205 /* PageController.swift in Sources */,
 				F33937471D05CBF400BBF205 /* InteractiveStory.swift in Sources */,
 				F33937371D05C5C000BBF205 /* ViewController.swift in Sources */,
 				F33937351D05C5C000BBF205 /* AppDelegate.swift in Sources */,

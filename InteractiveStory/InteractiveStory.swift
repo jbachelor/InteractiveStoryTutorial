@@ -90,7 +90,7 @@ struct Adventure {
         let crate = touchDown.addChoice("Open the crate", story: .Crate)
         
         homeward.addChoice("Head back to Mars", page: touchDown)
-        let home = homeward.addChoice("Continue home to earth)", story: .Home)
+        let home = homeward.addChoice("Continue home to earth", story: .Home)
         
         let cave = rover.addChoice("Explore the coordinates", story: .Cave)
         rover.addChoice("Return to earth", page: home)
