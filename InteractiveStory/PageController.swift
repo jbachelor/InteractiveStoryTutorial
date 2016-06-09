@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class PageController: UIViewController {
-    
+    var sound: SystemSoundID = 0
     var page: Page?
     let artwork = UIImageView()
     let storyLabel = UILabel()
@@ -29,6 +30,7 @@ class PageController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("PageController.viewDidLoad")
         view.backgroundColor = UIColor.whiteColor()
         
         if let page = page {
@@ -61,7 +63,7 @@ class PageController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        
+        print("PageController.viewWillLayoutSubviews")
         view.addSubview(artwork)
         artwork.translatesAutoresizingMaskIntoConstraints = false
         
@@ -99,25 +101,36 @@ class PageController: UIViewController {
     }
     
     func loadFirstChoice() {
+        print("PageController.loadFirstChoice")
         if let page = page, firstChoice = page.firstChoice {
             let nextPage = firstChoice.page
             let pageController = PageController(page: nextPage)
             
+            playSound(nextPage.story.soundEffectURL)
             navigationController?.pushViewController(pageController, animated: true)
         }
     }
     
     func loadSecondChoice() {
+        print("PageController.loadSecondChoice")
         if let page = page, secondChoice = page.secondChoice {
             let nextPage = secondChoice.page
             let pageController = PageController(page: nextPage)
             
+            playSound(page.story.soundEffectURL)
             navigationController?.pushViewController(pageController, animated: true)
         }
     }
     
     func playAgain() {
+        print("PageController.playAgain")
         navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func playSound(url: NSURL) {
+        print("PageController.playSound(url: \(url))")
+        AudioServicesCreateSystemSoundID(url, &sound)
+        AudioServicesPlaySystemSound(sound)
     }
 }
 

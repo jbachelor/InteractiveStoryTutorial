@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("ViewController.viewDidLoad")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -31,6 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("ViewController.prepareForSegue(segue: \(segue.destinationViewController), sender: \(sender.debugDescription)")
         if segue.identifier == "startAdventure" {
             do {
                 if let name = nameTextField.text {
@@ -53,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        print("ViewController.keyboardWillShow")
         if let userInfoDict = notification.userInfo, keyboardframeValue = userInfoDict[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardFrame = keyboardframeValue.CGRectValue()
             UIView.animateWithDuration(0.8) {
@@ -63,6 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        print("ViewController.keyboardWillHide")
         if let userInfoDict = notification.userInfo, keyboardframeValue = userInfoDict[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardFrame = keyboardframeValue.CGRectValue()
             UIView.animateWithDuration(0.8) {
@@ -81,6 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("ViewController.textFieldShouldReturn(textField: \(textField.text))")
         textField.resignFirstResponder()
         return true
     }

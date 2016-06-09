@@ -40,6 +40,19 @@ extension Story {
         return UIImage(named: self.rawValue)!
     }
     
+    var soundEffectURL: NSURL {
+        let fileName: String
+        
+        switch self {
+            case .Droid, .Home: fileName = "HappyEnding"
+            case .Monster: fileName = "Ominous"
+            default: fileName = "PageTurn"
+        }
+        
+        let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "wav")!
+        return NSURL(fileURLWithPath: path)
+    }
+    
     var text: String {
         switch self {
         case .ReturnTrip(let name):
@@ -78,11 +91,13 @@ class Page {
 
 extension Page {
     func addChoice(title: String, story: Story) -> Page {
+        print("Page.addChoice(title: \(title), story: \(story))")
         let page = Page(story: story)
         return addChoice(title, page: page)
     }
     
     func addChoice(title: String, page: Page) -> Page {
+        print("Page.addChoice(title: \(title), page: \(page.story))")
         switch (firstChoice, secondChoice) {
         case (.Some, .Some):
             break
@@ -97,6 +112,7 @@ extension Page {
 
 struct Adventure {
     static func story(name: String) -> Page {
+        print("Adventure.story(name: \(name))")
         let returnTrip = Page(story: .ReturnTrip(name))
         let touchDown = returnTrip.addChoice("Stop and Investigate", story: .TouchDown)
         let homeward = returnTrip.addChoice("Continue Home to Earth", story: .Homeward)
@@ -112,8 +128,8 @@ struct Adventure {
         cave.addChoice("Continue towards faint light", story: .Droid(name))
         cave.addChoice("Refill the ship and explore the rover", page: rover)
         
-        crate.addChoice("Explore the Rover", page: rover)
         crate.addChoice("Use the key", story:  .Monster)
+        crate.addChoice("Explore the Rover", page: rover)
         
         return returnTrip
     }
